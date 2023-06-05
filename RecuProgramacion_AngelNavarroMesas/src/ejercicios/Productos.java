@@ -1,6 +1,6 @@
 package ejercicios;
 
-public class Productos {
+public class Productos implements Comparable{
 	
 	String nombre;
 	double precio;
@@ -43,6 +43,15 @@ public class Productos {
 		mostrar = "nombre = " + nombre +"\n"+"precio = " + precio;
 		return mostrar;
 	}
+
+	@Override
+	public int compareTo(Object o) {
+		
+		return 0;
+	}
 	
+	public void equals(int c){
+		
+	}
 	
 }
