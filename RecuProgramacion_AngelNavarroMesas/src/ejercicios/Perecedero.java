@@ -1,15 +1,15 @@
 package ejercicios;
 
-public class Precedero extends Productos{
+public class Perecedero extends Producto{
 	
 	int diasCaducar;
 	
-	public Precedero(String nombre, double precio, int diasCaducar) {
+	public Perecedero(String nombre, double precio, int diasCaducar) {
 		super(nombre, precio);
 		this.diasCaducar = diasCaducar;
 	}
 
-	public Precedero(String nombre, double precio) {
+	public Perecedero(String nombre, double precio) {
 		super(nombre, precio);
 	}
 
