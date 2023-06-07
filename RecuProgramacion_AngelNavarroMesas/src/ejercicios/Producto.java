@@ -14,8 +14,13 @@ public class Producto implements Comparable<Producto>{
 		}
 	}
 	
+	public Producto(String nombre) {
+		if(nombre != null && !nombre.isEmpty()){
+			this.nombre = nombre;
+		}
+	}
+	
 	public Producto() {
-		super();
 	}
 
 	public String getNombre() {
@@ -52,14 +57,8 @@ public class Producto implements Comparable<Producto>{
 
 	@Override
 	public int compareTo(Producto o) {
-		int pos;
-		if(this.nombre.equals(nombre)){
-			pos = this.nombre.compareTo(nombre);
-		}else if(this.precio < precio) {
-			pos=-1;
-		}else {
-			pos=1;
-		}
+		int pos = 0;
+		pos = this.nombre.compareTo(o.nombre);
 		
 		return pos;
 	}
@@ -67,7 +66,8 @@ public class Producto implements Comparable<Producto>{
 	@Override
 	public boolean equals(Object obj) {
 		boolean igual=false;
-		if(this.nombre.equals(nombre)) {
+		Producto p = (Producto) obj;
+		if(this.nombre.equals(p.nombre)) {
 			igual=true;
 		}
 		return igual;
