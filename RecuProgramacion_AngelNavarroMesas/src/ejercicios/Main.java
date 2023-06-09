@@ -78,8 +78,13 @@ public class Main {
 	}
 	
 	private static void listar() {
-		System.out.println(producto);
-		
+		if (producto.size() == 0) {
+			System.out.println("No hay productos");
+		} else {
+			for (Producto i:producto) {
+				System.out.println(i);
+			}
+		}
 	}
 	
 	private static void modificar() {
@@ -89,13 +94,23 @@ public class Main {
 		Producto p = new Producto(nombre);
 		
 		if(producto.contains(p)) {
-			System.out.println("Que dato quiere modificar?");
-			System.out.println("1. nombre");
-			System.out.println("2. precio");
-			System.out.println();
-			opc = sc.nextInt();
+			do {
+				System.out.println("Que dato quiere modificar?");
+				System.out.println("1. Precio");
+				if(p instanceof Perecedero) {
+					System.out.println("2. Tipo");
+				}else if(p instanceof NoPerecedero) {
+					System.out.println("2. Dias de caducacion");
+				}
+				opc = sc.nextInt();
+				sc.nextLine();
+			}while(opc!=1||opc!=2);
 			
-			
+			if (opc==1) {
+				System.out.println("Introduzca el precio");
+				p.setPrecio(sc.nextDouble());
+				System.out.println("producto modificado");
+			}
 		}else {
 			System.out.println("El producto no existe");
 		}
