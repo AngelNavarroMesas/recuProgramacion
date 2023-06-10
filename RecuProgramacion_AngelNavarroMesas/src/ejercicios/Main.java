@@ -93,26 +93,37 @@ public class Main {
 		nombre = sc.nextLine();
 		Producto p = new Producto(nombre);
 		
-		if(producto.contains(p)) {
-			do {
-				System.out.println("Que dato quiere modificar?");
-				System.out.println("1. Precio");
-				if(p instanceof Perecedero) {
-					System.out.println("2. Tipo");
-				}else if(p instanceof NoPerecedero) {
-					System.out.println("2. Dias de caducacion");
-				}
-				opc = sc.nextInt();
-				sc.nextLine();
-			}while(opc!=1||opc!=2);
-			
-			if (opc==1) {
-				System.out.println("Introduzca el precio");
-				p.setPrecio(sc.nextDouble());
-				System.out.println("producto modificado");
+		for (Producto pro : producto) {
+			if(pro.equals(p)) {
+				do {
+					System.out.println("Que dato quiere modificar?");
+					System.out.println("1. Precio");
+					if(pro instanceof Perecedero) {
+						System.out.println("2. Dias de caducacion");
+					}else if(pro instanceof NoPerecedero) {
+						System.out.println("2. Tipo");
+					}
+					opc = sc.nextInt();
+					sc.nextLine();
+				}while(opc!=1&&opc!=2);
+				
+				if (opc==1) {
+					System.out.println("Introduzca el precio");
+					pro.setPrecio(sc.nextDouble());
+					System.out.println("producto modificado");
+				}else if (pro instanceof Perecedero) {
+						System.out.println("Introduzca los días a caducar");
+						Perecedero per = (Perecedero) pro;
+						per.setDiasCaducar(sc.nextInt());
+						System.out.println("producto modificado");
+					} else if (pro instanceof NoPerecedero) {
+						System.out.println("Introduzca el tipo");
+						NoPerecedero no = (NoPerecedero) pro;
+						no.setTipo(sc.next());
+						System.out.println("producto modificado");
+					}
+				
 			}
-		}else {
-			System.out.println("El producto no existe");
 		}
 		
 	}
