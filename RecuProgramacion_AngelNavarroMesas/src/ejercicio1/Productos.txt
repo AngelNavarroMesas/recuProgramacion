@@ -1,0 +1,3 @@
+fanta;15.0;10
+patatas;6.0;hortaliza
+tomate;15.0;verdura

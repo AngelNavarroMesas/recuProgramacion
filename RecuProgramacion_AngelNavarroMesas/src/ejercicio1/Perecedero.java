@@ -1,4 +1,4 @@
-package ejercicios;
+package ejercicio1;
 
 public class Perecedero extends Producto{
 	
