@@ -4,8 +4,13 @@ import ejercicio1.Producto;
 
 public class Electrodomestico implements Comparable<Electrodomestico>{
 	double precio, peso;
-    String color="", codigo="";
-    char consumo;
+	enum color{
+		blanco, negro,rojo, azul, gris
+	}
+	enum consumo{
+		A,B,C,D,E
+	}
+    String codigo="";
 
     public Electrodomestico(String codigo, double precio, double peso, String color, char consumo) {
         this.codigo = codigo;
@@ -103,7 +108,7 @@ public class Electrodomestico implements Comparable<Electrodomestico>{
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = comprobarColor(color);
     }
 
     public char getConsumo() {
@@ -111,16 +116,16 @@ public class Electrodomestico implements Comparable<Electrodomestico>{
     }
 
     public void setConsumo(char consumo) {
-        this.consumo = consumo;
+        this.consumo = comprobarConsumoEnergetico(consumo);
     }
     
     @Override
     public String toString() {
-        return "Codigo: " +codigo+"\n"+
-               "precio: " +precio+"\n"+
-               "peso: " +peso+"\n"+
-               "color: " +color+"\n"+
-               "consumo: " + consumo;
+        return "Codigo: "+codigo+"\n"+
+               "Precio: "+precio+"\n"+
+               "Peso: "+peso+"\n"+
+               "Color: "+color+"\n"+
+               "Consumo: "+consumo;
     }
     
     @Override
