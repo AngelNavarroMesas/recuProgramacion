@@ -1,80 +1,113 @@
 package ejercicio2;
 
-import ejercicio1.Producto;
-
 public class Electrodomestico implements Comparable<Electrodomestico>{
-	double precio, peso;
-	enum color{
+	enum Color{
 		blanco, negro,rojo, azul, gris
 	}
-	enum consumo{
-		A,B,C,D,E
+	enum Consumo{
+		A,B,C,D,E,F
 	}
-    String codigo="";
-
-    public Electrodomestico(String codigo, double precio, double peso, String color, char consumo) {
-        this.codigo = codigo;
-    	this.precio = precio;
-        this.peso = peso;
-        this.color = comprobarColor(color);
-        this.consumo = comprobarConsumoEnergetico(consumo);
+	protected Color color= Color.blanco;
+	protected Consumo ce = Consumo.F;
+	protected double precio = 100, peso=5;
+    protected int codigo;
+    
+    public Electrodomestico(){
     }
     
-    public Electrodomestico(String codigo) {
+    public Electrodomestico(int codigo) {
     	this.codigo = codigo;
     }
     
-    public Electrodomestico(String codigo, double precio, double peso){
+    public Electrodomestico(int codigo, double precio, double peso){
     	this.codigo = codigo;
         this.precio = precio;
         this.peso = peso;
     }
     
-    public Electrodomestico(){
-        this.color = "blanco";
-        this.consumo = 'F';
-        this.precio = 100;
-        this.peso = 5;
+    public Electrodomestico(int codigo, double precio, double peso,String color,char consumo) {
+        this.codigo = codigo;
+    	this.precio = precio;
+        this.peso = peso;
+        comprobarColor(color);
+        comprobarConsumoEnergetico(consumo);
     }
     
-    private static char comprobarConsumoEnergetico(char letra){
-        switch (letra){
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+    	if(precio>=0) {
+    		this.precio = precio;
+    	}
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+    	if(peso>0) {
+    		this.peso = peso;
+    	}
+    }
+
+    public String getColor() {
+        return String.valueOf(color);
+    }
+
+    public void setColor(String color) {
+        comprobarColor(color);
+    }
+
+    public char getConsumo() {
+        return String.valueOf(ce).charAt(0);
+    }
+
+    public void setConsumo(char consumo) {
+        comprobarConsumoEnergetico(consumo);
+    }
+    
+    private void comprobarConsumoEnergetico(char consumo){
+        switch (consumo){
             case 'A','B','C','D','E':
+            	ce = Consumo.valueOf(String.valueOf(consumo));
                 break;
             default:
-                letra = 'F';
+                ce = Consumo.valueOf(String.valueOf('F'));
         }
-        return letra;
+		
     }
     
-    private static String comprobarColor(String color){
-        switch (color.toLowerCase()){
+    private void comprobarColor(String c){
+        switch (c.toLowerCase()){
             case "blanco", "negro","rojo", "azul", "gris":
+            	color = Color.valueOf(c);
                 break;
             default:
-                color = "blanco";
+                color = Color.blanco;
         }
-        return color;
     }
     
     public void precioFinal(){
-        switch (consumo){
-            case 'A':
+        switch (ce){
+            case A:
                 precio+=100;
                 break;
-            case 'B':
+            case B:
                 precio+=80;
                 break;
-            case 'C':
+            case C:
                 precio+=60;
                 break;
-            case 'D':
+            case D:
                 precio+=50;
                 break;
-            case 'E':
+            case E:
                 precio+=30;
                 break;
-            case 'F':
+            case F:
                 precio+=10;
                 break;
         }
@@ -87,52 +120,20 @@ public class Electrodomestico implements Comparable<Electrodomestico>{
         }else precio+=100;
     }
     
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = comprobarColor(color);
-    }
-
-    public char getConsumo() {
-        return consumo;
-    }
-
-    public void setConsumo(char consumo) {
-        this.consumo = comprobarConsumoEnergetico(consumo);
-    }
-    
     @Override
     public String toString() {
         return "Codigo: "+codigo+"\n"+
                "Precio: "+precio+"\n"+
                "Peso: "+peso+"\n"+
                "Color: "+color+"\n"+
-               "Consumo: "+consumo;
+               "Consumo: "+ce;
     }
     
     @Override
 	public boolean equals(Object obj) {
 		boolean igual=false;
 		Electrodomestico e = (Electrodomestico) obj;
-		if(this.codigo.equals(e.codigo)) {
+		if(this.codigo==e.codigo) {
 			igual=true;
 		}
 		return igual;
@@ -141,7 +142,7 @@ public class Electrodomestico implements Comparable<Electrodomestico>{
 	@Override
 	public int compareTo(Electrodomestico o) {
 		int pos = 0;
-		pos = this.codigo.compareTo(o.codigo);
+		pos = this.codigo-o.codigo;
 		return pos;
 	}
 }

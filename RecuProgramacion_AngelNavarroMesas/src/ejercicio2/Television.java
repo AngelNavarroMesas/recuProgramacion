@@ -5,16 +5,15 @@ public class Television extends Electrodomestico{
 	double resolucion;
 	boolean TDT;
 	
-	public Television(String codigo, double precio, double peso, String color, char consumo) {
-		super(codigo, precio, peso, color, consumo);
-	}
-	
-		public Television(String codigo, double precio, double peso) {
+	public Television(int codigo, double precio, double peso) {
 		super(codigo, precio, peso);
 	}
+	
+	public Television(int codigo, double precio, double peso, String color, char consumo) {
+		super(codigo, precio, peso, color, consumo);
+	}
 
-	public Television(String codigo, double precio, double peso, String color, char consumo, double resolucion,
-			boolean tDT) {
+	public Television (int codigo, double precio, double peso, String color, char consumo, double resolucion, boolean tDT) {
 		super(codigo, precio, peso, color, consumo);
 		this.resolucion = resolucion;
 		TDT = tDT;
@@ -25,7 +24,9 @@ public class Television extends Electrodomestico{
 	}
 
 	public void setResolucion(double resolucion) {
-		this.resolucion = resolucion;
+		if(resolucion>0) {
+			this.resolucion = resolucion;
+		}
 	}
 
 	public boolean isTDT() {
@@ -36,7 +37,8 @@ public class Television extends Electrodomestico{
 		TDT = tDT;
 	}
 	
-	public void precioFinalLavadora() {
+	@Override
+	public void precioFinal() {
 		super.precioFinal();
 		if(resolucion>40) {
 			precio+= (precio*0.3);
@@ -53,7 +55,7 @@ public class Television extends Electrodomestico{
 	               "Precio: "+precio+"\n"+
 	               "Peso: "+peso+"\n"+
 	               "Color: "+color+"\n"+
-	               "Consumo: "+consumo+"\n"+
+	               "Consumo: "+ce+"\n"+
 	               "Resolución: "+resolucion+"\n"+
 	               "TDT: "+TDT;
 	}

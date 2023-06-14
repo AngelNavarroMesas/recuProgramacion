@@ -2,22 +2,22 @@ package ejercicio2;
 
 public class Lavadora extends Electrodomestico{
 	int carga;
-
-	public Lavadora(String codigo, double precio, double peso, String color, char consumo, int carga) {
-		super(codigo, precio, peso, color, consumo);
-		this.carga = carga;
-	}
-	
-	public Lavadora(String codigo){
-		super(codigo);
-	}
-	
-	public Lavadora(String codigo, double precio, double peso) {
-		super(codigo, precio, peso);
-	}
 	
 	public Lavadora() {
 		super();
+	}
+	
+	public Lavadora(int codigo){
+		super(codigo);
+	}
+	
+	public Lavadora(int codigo, double precio, double peso) {
+		super(codigo, precio, peso);
+	}
+	
+	public Lavadora(int codigo, double precio, double peso, String color, char consumo, int carga) {
+		super(codigo, precio, peso, color, consumo);
+		this.carga = carga;
 	}
 
 	public int getCarga() {
@@ -28,8 +28,8 @@ public class Lavadora extends Electrodomestico{
 		this.carga = carga;
 	}
 	
-	public void precioFinalLavadora() {
-		super.precioFinal();
+	@Override
+	public void precioFinal() {
 		if(carga>30) {
 			precio +=50;
 		}
@@ -42,7 +42,7 @@ public class Lavadora extends Electrodomestico{
 	               "Precio: "+precio+"\n"+
 	               "Peso: "+peso+"\n"+
 	               "Color: "+color+"\n"+
-	               "Consumo: "+consumo+"\n"+
+	               "Consumo: "+ce+"\n"+
 	               "Carga: "+carga;
 	}
 	
