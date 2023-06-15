@@ -32,7 +32,7 @@ public class Television extends Electrodomestico{
 			this.resolucion = resolucion;
 		}
 	}
-
+	
 	public boolean isTDT() {
 		return TDT;
 	}

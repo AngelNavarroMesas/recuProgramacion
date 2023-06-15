@@ -33,7 +33,17 @@ public class Electrodomestico implements Comparable<Electrodomestico>{
         comprobarConsumoEnergetico(consumo);
     }
     
-    public double getPrecio() {
+    public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		if(codigo>=0) {
+			this.codigo = codigo;
+		}
+	}
+
+	public double getPrecio() {
         return precio;
     }
 
