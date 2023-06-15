@@ -5,12 +5,16 @@ public class Television extends Electrodomestico{
 	double resolucion;
 	boolean TDT;
 	
-	public Television(int codigo, double precio, double peso) {
-		super(codigo, precio, peso);
+	public Television() {
+		super();
 	}
 	
-	public Television(int codigo, double precio, double peso, String color, char consumo) {
-		super(codigo, precio, peso, color, consumo);
+	public Television(int codigo) {
+		super(codigo);
+	}
+	
+	public Television(int codigo, double precio, double peso) {
+		super(codigo, precio, peso);
 	}
 
 	public Television (int codigo, double precio, double peso, String color, char consumo, double resolucion, boolean tDT) {
@@ -50,7 +54,7 @@ public class Television extends Electrodomestico{
 
 	@Override
 	public String toString() {
-		return 	"Lavadora \n"+
+		return 	"Television \n"+
 				   "Codigo: "+codigo+"\n"+
 	               "Precio: "+precio+"\n"+
 	               "Peso: "+peso+"\n"+
